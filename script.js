@@ -191,6 +191,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Redirect after spin
     closeBtn.addEventListener('click', function () {
-        window.location.href = 'index.html'; // ← Change if needed
+        window.location.href = 'https://dhamer.co/'; // ← Change if needed
     });
 });
