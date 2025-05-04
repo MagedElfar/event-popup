@@ -3,6 +3,29 @@
     box-sizing: border-box;
 }
 
+/* ===== RTL STYLES ===== */
+body.rtl {
+    direction: rtl;
+}
+
+body.rtl label {
+    text-align: right;
+}
+
+body.rtl .form-group {
+    text-align: right;
+}
+
+body.rtl .mui-textfield label {
+    left: auto;
+    right: 0;
+}
+
+body.rtl .mui-textfield input {
+    text-align: right;
+}
+
+
 body {
     font-family: 'Arial', sans-serif;
     display: flex;
@@ -16,7 +39,6 @@ body {
     background: url('home.png');
     background-size: cover;
     background-position: center;
-
 }
 
 .body-overlay {
@@ -29,6 +51,8 @@ body {
     position: fixed;
     inset: 0;
 }
+
+/* The rest of the CSS styling remains the same... */
 
 
 h1,

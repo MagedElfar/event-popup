@@ -1,16 +1,76 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // DOM Elements
-    const userFormPopup = document.getElementById('userFormPopup');
-    const userForm = document.getElementById('userForm');
-    const wheelContainer = document.getElementById('wheelContainer');
-    const wheel = document.getElementById('wheel');
-    const spinBtn = document.getElementById('spinBtn');
-    const winnerPopup = document.getElementById('winnerPopup');
-    const closeBtn = document.getElementById('closeBtn');
-    const winColor = document.getElementById('winColor');
-    const colorName = document.getElementById('colorName');
 
-    // Form inputs
+    // URL language param
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get("lang") === "ar" ? "ar" : "en";
+
+    const htmlTag = document.getElementById("htmlTag");
+    const body = document.body;
+
+    if (lang === "ar") {
+        htmlTag.setAttribute("lang", "ar");
+        htmlTag.setAttribute("dir", "rtl");
+        body.classList.add("rtl");
+    } else {
+        htmlTag.setAttribute("lang", "en");
+        htmlTag.setAttribute("dir", "ltr");
+        body.classList.remove("rtl");
+    }
+
+    // Translations
+    const translations = {
+        en: {
+            welcome: "Welcome to the Spinning Wheel Game!",
+            formText: "Please enter your information to continue:",
+            nameLabel: "Name",
+            emailLabel: "Email",
+            phoneLabel: "Phone Number",
+            submitBtn: "Start Play",
+            gameTitle: "Spinning Color Wheel",
+            spinBtn: "SPIN",
+            winnerText: "Congratulations! You Won! 🎉",
+            winnerColorText: "You nailed it! The winning color is:",
+            colorLabel: "Color",
+            closeBtn: "Back to Website",
+            nameError: "Name must be at least 2 characters",
+            emailError: "Enter a valid email",
+            phoneError: "Enter a valid phone number (e.g. +1xxxxxxxxxx)"
+        },
+        ar: {
+            welcome: "مرحبًا بك في لعبة العجلة الدوارة!",
+            formText: "يرجى إدخال معلوماتك للمتابعة:",
+            nameLabel: "الاسم",
+            emailLabel: "البريد الإلكتروني",
+            phoneLabel: "رقم الهاتف",
+            submitBtn: "ابدأ اللعب",
+            gameTitle: "عجلة الألوان الدوارة",
+            spinBtn: "ادفع",
+            winnerText: "مبروك! لقد فزت! 🎉",
+            winnerColorText: "لقد أصبت! اللون الفائز هو:",
+            colorLabel: "اللون",
+            closeBtn: "العودة للموقع",
+            nameError: "يجب أن يحتوي الاسم على حرفين على الأقل",
+            emailError: "أدخل بريدًا إلكترونيًا صحيحًا",
+            phoneError: "أدخل رقم هاتف صحيح (مثال: +1xxxxxxxxxx)"
+        }
+    };
+
+    const t = translations[lang];
+
+    // Set all translated text
+    document.getElementById("welcomeText").textContent = t.welcome;
+    document.getElementById("formText").textContent = t.formText;
+    document.getElementById("labelName").textContent = t.nameLabel;
+    document.getElementById("labelEmail").textContent = t.emailLabel;
+    document.getElementById("labelPhone").textContent = t.phoneLabel;
+    document.getElementById("submitBtn").textContent = t.submitBtn;
+    document.getElementById("gameTitle").textContent = t.gameTitle;
+    document.getElementById("spinBtn").textContent = t.spinBtn;
+    document.getElementById("winnerText").textContent = t.winnerText;
+    document.getElementById("winnerColorText").textContent = t.winnerColorText;
+    document.getElementById("colorName").textContent = t.colorLabel;
+    document.getElementById("closeBtn").textContent = t.closeBtn;
+    // Form inputs and errors
     const userName = document.getElementById('userName');
     const userEmail = document.getElementById('userEmail');
     const userPhone = document.getElementById('userPhone');
@@ -43,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function validateName() {
         const value = userName.value.trim();
         if (value.length < 2) {
-            nameError.textContent = 'Name must be at least 2 characters';
+            nameError.textContent = translations[lang].nameError;
             return false;
         }
         nameError.textContent = '';
@@ -54,21 +114,22 @@ document.addEventListener('DOMContentLoaded', function () {
         const value = userEmail.value.trim();
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!regex.test(value)) {
-            emailError.textContent = 'Enter a valid email';
+            emailError.textContent = translations[lang].emailError;
             return false;
         }
         emailError.textContent = '';
         return true;
     }
+
     function validatePhone() {
         const digits = userPhone.value.replace(/\D/g, ''); // Remove non-digit characters
         const phoneNumber = userPhone.value;
 
         // E.164 format validation: starts with a '+' followed by 8 to 15 digits
-        const regex = /^\+?\d{8,15}$/;
+        const regex = /^\+?\d{8,100}$/;
 
         if (!regex.test(phoneNumber)) {
-            phoneError.textContent = 'Enter a valid phone number (e.g. +1xxxxxxxxxx)';
+            phoneError.textContent = translations[lang].phoneError;
             return false;
         }
 
