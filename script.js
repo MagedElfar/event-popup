@@ -60,13 +60,18 @@ document.addEventListener('DOMContentLoaded', function () {
         emailError.textContent = '';
         return true;
     }
-
     function validatePhone() {
-        const digits = userPhone.value.replace(/\D/g, '');
-        if (!/^\d{10,15}$/.test(digits)) {
-            phoneError.textContent = 'Enter 10–15 digits';
+        const digits = userPhone.value.replace(/\D/g, ''); // Remove non-digit characters
+        const phoneNumber = userPhone.value;
+
+        // E.164 format validation: starts with a '+' followed by 8 to 15 digits
+        const regex = /^\+?\d{8,15}$/;
+
+        if (!regex.test(phoneNumber)) {
+            phoneError.textContent = 'Enter a valid phone number (e.g. +1xxxxxxxxxx)';
             return false;
         }
+
         phoneError.textContent = '';
         return true;
     }
