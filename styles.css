@@ -1,0 +1,319 @@
+/* ===== GENERAL STYLES ===== */
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    overflow-x: hidden;
+    background: url('home.png');
+    background-size: cover;
+    background-position: center;
+
+}
+
+.body-overlay {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 100%;
+    height: 100%;
+    /* Optional frosted white tint */
+    position: absolute;
+    inset: 0;
+}
+
+
+h1,
+h2 {
+    font-size: 19px;
+    margin: 0;
+    margin-bottom: 24px;
+    font-weight: 600;
+    line-height: 26px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 32px;
+}
+
+p {
+    font-size: 13px;
+    margin-bottom: 32px;
+    font-weight: 400;
+    line-height: 17px;
+    color: #868E96;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.btn {
+    width: fit-content;
+    height: 50px;
+    padding: 16px;
+    border-radius: 50px;
+    background-color: #D24173;
+    color: #FFF;
+    font-size: 15px;
+    font-weight: 700;
+    border: 1px solid #D24173;
+    text-transform: capitalize;
+    transition: all 0.3s;
+    cursor: pointer;
+    min-width: 200px;
+}
+
+.btn:hover {
+    background-color: #B5305E;
+    box-shadow: 0 8px 16px 0 rgba(210 65 115 / 0.2);
+}
+
+.btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    border-color: #cccccc;
+}
+
+/* ===== POPUP STYLES ===== */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(28, 37, 46, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 30px;
+    text-align: center;
+    max-width: 90%;
+    width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 99999;
+}
+
+/* ===== FORM STYLES ===== */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.error-message {
+    color: #ef5350;
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+}
+
+.submit-btn {
+    width: 100%;
+}
+
+/* ===== MUI-LIKE TEXTFIELD ===== */
+.mui-textfield {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.mui-textfield input {
+    border: none;
+    border-bottom: 2px solid #ccc;
+    padding: 10px 0 5px 0;
+    font-size: 16px;
+    width: 100%;
+    background: transparent;
+    transition: border-color 0.3s;
+}
+
+.mui-textfield input:focus {
+    outline: none;
+    border-bottom: 2px solid #000;
+}
+
+.mui-textfield label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    font-size: 14px;
+    color: #637381;
+    pointer-events: none;
+    transition: 0.2s ease all;
+}
+
+.mui-textfield input:focus~label,
+.mui-textfield input:not(:placeholder-shown)~label {
+    top: -10px;
+    font-size: 12px;
+    color: #000;
+    background-color: #fff;
+}
+
+/* Add space so label doesn't overlap underline */
+.mui-textfield input:focus~label::before,
+.mui-textfield input:not(:placeholder-shown)~label::before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: 10px;
+}
+
+
+/* ===== WHEEL CONTAINER STYLES ===== */
+.container {
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.user-info-display {
+    background-color: #e8f5e9;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.wheel-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 20px 0;
+}
+
+/* ===== WHEEL STYLES ===== */
+
+.wheel {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    transition: transform 8s cubic-bezier(0.1, 0.7, 0.1, 1);
+    transform: rotate(0deg);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.pointer {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 30px solid #333;
+    z-index: 2;
+}
+
+.wheel-center {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+/* ===== WINNER DISPLAY STYLES ===== */
+.color-display {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 20px auto;
+    border: 3px solid #eee;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+@media (max-width: 600px) {
+    .form-popup {
+        width: 90%;
+    }
+
+    .wheel-container {
+        width: 250px;
+        height: 250px;
+    }
+
+    .spin-btn,
+    .close-btn {
+        padding: 8px 20px;
+        font-size: 16px;
+    }
+}
+
+/* Add to existing CSS */
+#winnerPopup .popup-content {
+    animation: popupBounceIn 0.5s ease forwards;
+}
+
+
+.color-display {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 20px auto;
+    border: 3px solid #eee;
+    animation: pulseGlow 1.5s infinite ease-in-out;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+#confettiCanvas {
+    z-index: 9999;
+    position: absolute;
+    top: 0
+}
+
+@keyframes popupBounceIn {
+    0% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
+    }
+}
