@@ -57,6 +57,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const t = translations[lang];
 
+    const userName = document.getElementById('userName');
+    const userEmail = document.getElementById('userEmail');
+    const userPhone = document.getElementById('userPhone');
+    const nameError = document.getElementById('nameError');
+    const emailError = document.getElementById('emailError');
+    const phoneError = document.getElementById('phoneError');
+    const closeBtn = document.getElementById("closeBtn")
+
+
     // Set all translated text
     document.getElementById("welcomeText").textContent = t.welcome;
     document.getElementById("formText").textContent = t.formText;
@@ -69,14 +78,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("winnerText").textContent = t.winnerText;
     document.getElementById("winnerColorText").textContent = t.winnerColorText;
     document.getElementById("colorName").textContent = t.colorLabel;
-    document.getElementById("closeBtn").textContent = t.closeBtn;
+    closeBtn.textContent = t.closeBtn;
     // Form inputs and errors
-    const userName = document.getElementById('userName');
-    const userEmail = document.getElementById('userEmail');
-    const userPhone = document.getElementById('userPhone');
-    const nameError = document.getElementById('nameError');
-    const emailError = document.getElementById('emailError');
-    const phoneError = document.getElementById('phoneError');
 
     // Colors
     const colors = [
