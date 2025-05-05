@@ -258,6 +258,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }, spinDuration);
     });
 
+    document.getElementById('closeBtn').addEventListener('click', function () {
+        window.parent.postMessage({ action: 'closePopup' }, '*');
+    });
+
     // // Redirect after spin
     // closeBtn.addEventListener('click', function () {
     //     window.location.href = 'https://dhamer.co/'; // ← Change if needed

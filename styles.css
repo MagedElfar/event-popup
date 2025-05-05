@@ -122,10 +122,6 @@ p {
     padding: 16px;
 }
 
-#closeBtn {
-    display: inline-block;
-}
-
 .popup-content {
     background-color: white;
     padding: 30px;
