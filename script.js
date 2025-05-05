@@ -258,8 +258,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }, spinDuration);
     });
 
-    // Redirect after spin
-    closeBtn.addEventListener('click', function () {
-        window.location.href = 'https://dhamer.co/'; // ← Change if needed
-    });
+    // // Redirect after spin
+    // closeBtn.addEventListener('click', function () {
+    //     window.location.href = 'https://dhamer.co/'; // ← Change if needed
+    // });
 });
