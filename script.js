@@ -230,14 +230,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Send user info and color to server
             const data = {
-                name: userName.value.trim(),
-                email: userEmail.value.trim(),
-                phone: userPhone.value.trim(),
-                color: winningColor.name,
-                _subject: 'Spanning wheel event',
+                name: "Wheel-Event",
+                data: {
+                    name: userName.value.trim(),
+                    email: userEmail.value.trim(),
+                    phone: userPhone.value.trim(),
+                    color: winningColor.name,
+                }
             };
 
-            fetch('https://formsubmit.co/maged.1992.me@gmail.com', {
+            fetch('https://api.dhamer.co/api/events', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -245,14 +247,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 body: JSON.stringify(data)
             })
-                .then(() => {
-                    // ✅ Just trigger the cookie event
+                .then(res => res.json())
+                .then(response => {
                     window.parent.postMessage({ action: 'startSetCookies' }, '*');
                 })
                 .catch(err => {
                     console.error('Failed to send data:', err);
                 });
-
 
             launchConfetti(); // 🎉
 
