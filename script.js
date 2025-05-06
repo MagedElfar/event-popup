@@ -233,13 +233,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 name: userName.value.trim(),
                 email: userEmail.value.trim(),
                 phone: userPhone.value.trim(),
-                color: winningColor.name
+                color: winningColor.name,
+                _subject: 'Spanning wheel event',
             };
 
-            fetch('https://your-server.com/api/save-winner', {
+            fetch('https://formsubmit.co/maged.1992.me@gmail.com', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
                 },
                 body: JSON.stringify(data)
             })
