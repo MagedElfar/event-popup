@@ -246,6 +246,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 .then(res => res.json())
                 .then(response => {
                     console.log('Data saved:', response);
+                    window.parent.postMessage({ action: 'startSetCookies' }, '*');
                 })
                 .catch(err => {
                     console.error('Failed to send data:', err);
