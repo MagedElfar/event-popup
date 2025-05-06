@@ -245,14 +245,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 body: JSON.stringify(data)
             })
-                .then(res => res.json())
-                .then(response => {
-                    console.log('Data saved:', response);
+                .then(() => {
+                    // ✅ Just trigger the cookie event
                     window.parent.postMessage({ action: 'startSetCookies' }, '*');
                 })
                 .catch(err => {
                     console.error('Failed to send data:', err);
                 });
+
 
             launchConfetti(); // 🎉
 
