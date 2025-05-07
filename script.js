@@ -83,23 +83,41 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Colors
     const colors = [
-        { name: "Red", hex: "#FF5252" },
-        { name: "Blue", hex: "#448AFF" },
-        { name: "Green", hex: "#4CAF50" },
-        { name: "Yellow", hex: "#FFEB3B" },
-        { name: "Purple", hex: "#9C27B0" }
+        { name: "Orange", hex: "#FFA500", img: "/orange.png" },
+        { name: "Blue", hex: "#448AFF", img: "/blue.jpg" },
     ];
 
     function createWheel() {
+        const wheel = document.getElementById('wheel'); // Make sure to get the wheel element
         const total = colors.length;
-        let gradient = '';
-        colors.forEach((c, i) => {
-            const start = (i / total * 100).toFixed(2);
-            const end = ((i + 1) / total * 100).toFixed(2);
-            gradient += `${c.hex} ${start}%, ${c.hex} ${end}%`;
-            if (i < colors.length - 1) gradient += ', ';
+
+        // Create pie segments with images as backgrounds
+        wheel.innerHTML = ''; // Clear any existing content
+
+        colors.forEach((color, i) => {
+            const segment = document.createElement('div');
+            segment.className = 'wheel-segment';
+
+            // Calculate the rotation angle for this segment
+            const rotationAngle = (i * (360 / total));
+
+            // Style the segment
+            segment.style.transform = `rotate(${rotationAngle}deg)`;
+            segment.style.backgroundImage = `url(${color.img})`;
+            segment.style.backgroundSize = 'cover';
+            segment.style.width = '100%';
+            segment.style.height = '100%';
+            segment.style.position = 'absolute';
+            segment.style.clipPath = `polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 50%)`;
+
+            if (i === 0) {
+                segment.style.transformOrigin = 'left center';
+            } else {
+                segment.style.transformOrigin = "center";
+            }
+
+            wheel.appendChild(segment);
         });
-        wheel.style.background = `conic-gradient(${gradient})`;
     }
 
     // Validation
@@ -197,6 +215,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    userFormPopup.style.display = 'none';
+    wheelContainer.style.display = 'flex';
+    createWheel();
+
     // Spin logic
     let isSpinning = false;
     let currentRotation = 0;
@@ -204,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
     spinBtn.addEventListener('click', function () {
         if (isSpinning) return;
         isSpinning = true;
-        spinBtn.disabled = true;
+        // spinBtn.disabled = true;
 
         const minRotations = 4;
         const maxExtra = 4;
@@ -224,8 +246,15 @@ document.addEventListener('DOMContentLoaded', function () {
             const winningColor = colors[index];
 
             // Display popup
-            winColor.style.backgroundColor = winningColor.hex;
-            colorName.textContent = winningColor.name;
+            // winColor.style.backgroundColor = winningColor.hex;
+            // colorName.textContent = winningColor.name;
+            // winnerPopup.style.display = 'flex';
+
+            // Display popup
+            winColor.style.backgroundImage = `url(${winningColor.img})`;
+            winColor.style.backgroundSize = 'cover';
+            colorName.textContent = winningColor.name
+            colorName.style.color = winningColor.hex;
             winnerPopup.style.display = 'flex';
 
             // Send user info and color to server
@@ -239,21 +268,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             };
 
-            fetch('https://api.dhamer.co/api/events', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Accept: 'application/json',
-                },
-                body: JSON.stringify(data)
-            })
-                .then(res => res.json())
-                .then(response => {
-                    window.parent.postMessage({ action: 'startSetCookies' }, '*');
-                })
-                .catch(err => {
-                    console.error('Failed to send data:', err);
-                });
+            // fetch('https://api.dhamer.co/api/events', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //         Accept: 'application/json',
+            //     },
+            //     body: JSON.stringify(data)
+            // })
+            //     .then(res => res.json())
+            //     .then(response => {
+            //         window.parent.postMessage({ action: 'startSetCookies' }, '*');
+            //     })
+            //     .catch(err => {
+            //         console.error('Failed to send data:', err);
+            //     });
 
             launchConfetti(); // 🎉
 
@@ -264,6 +293,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('closeBtn').addEventListener('click', function () {
         window.parent.postMessage({ action: 'closePopup' }, '*');
+        winnerPopup.style.display = 'none';
+
     });
 
     // // Redirect after spin
