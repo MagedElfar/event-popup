@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Style the segment
             segment.style.transform = `rotate(${rotationAngle}deg)`;
-            segment.style.backgroundImage = `url(${color.img})`;
+            // segment.style.backgroundImage = `url(${color.img})`;
             segment.style.backgroundSize = 'cover';
             segment.style.width = '100%';
             segment.style.height = '100%';
