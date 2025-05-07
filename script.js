@@ -215,10 +215,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    userFormPopup.style.display = 'none';
-    wheelContainer.style.display = 'flex';
-    createWheel();
-
     // Spin logic
     let isSpinning = false;
     let currentRotation = 0;
@@ -226,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function () {
     spinBtn.addEventListener('click', function () {
         if (isSpinning) return;
         isSpinning = true;
-        // spinBtn.disabled = true;
+        spinBtn.disabled = true;
 
         const minRotations = 4;
         const maxExtra = 4;
@@ -268,21 +264,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             };
 
-            // fetch('https://api.dhamer.co/api/events', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //         Accept: 'application/json',
-            //     },
-            //     body: JSON.stringify(data)
-            // })
-            //     .then(res => res.json())
-            //     .then(response => {
-            //         window.parent.postMessage({ action: 'startSetCookies' }, '*');
-            //     })
-            //     .catch(err => {
-            //         console.error('Failed to send data:', err);
-            //     });
+            fetch('https://api.dhamer.co/api/events', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+                .then(res => res.json())
+                .then(response => {
+                    window.parent.postMessage({ action: 'startSetCookies' }, '*');
+                })
+                .catch(err => {
+                    console.error('Failed to send data:', err);
+                });
 
             launchConfetti(); // 🎉
 
@@ -293,7 +289,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('closeBtn').addEventListener('click', function () {
         window.parent.postMessage({ action: 'closePopup' }, '*');
-        winnerPopup.style.display = 'none';
 
     });
 
