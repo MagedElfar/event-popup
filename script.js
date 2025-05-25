@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const nameError = document.getElementById('nameError');
     const emailError = document.getElementById('emailError');
     const phoneError = document.getElementById('phoneError');
+    const closeBtn = document.getElementById("close-popup")
 
 
     // Validation
@@ -107,13 +108,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    document.getElementById('closeBtn').addEventListener('click', function () {
+    document.getElementById('close-popup').addEventListener('click', function () {
         window.parent.postMessage({ action: 'closePopup' }, '*');
 
     });
 
-    // // Redirect after spin
-    // closeBtn.addEventListener('click', function () {
-    //     window.location.href = 'https://dhamer.co/'; // ← Change if needed
-    // });
+    // Redirect after spin
+    closeBtn.addEventListener('click', function () {
+        window.parent.postMessage({ action: 'skipEvent' }, '*');
+    });
 });
