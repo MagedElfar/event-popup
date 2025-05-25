@@ -9,57 +9,56 @@
 </head>
 
 <body>
-    <div class="body-overlay"></div>
-
     <!-- User Information Form Popup -->
     <div class="popup" id="userFormPopup">
         <div class="popup-content form-popup">
-            <h2 id="welcomeText">Welcome to the Spinning Wheel Game!</h2>
-            <p id="formText">Please enter your information to continue:</p>
-            <form id="userForm">
-                <div class="form-group mui-textfield">
-                    <input type="text" id="userName" placeholder=" " required />
-                    <label for="userName" id="labelName">Name</label>
-                    <span class="error-message" id="nameError"></span>
-                </div>
+            <div>
+                <img src="/media/popup-image.png" />
+            </div>
+            <div class="form-popup-content">
+                <h1>Only for the First <span>100!</span></h1>
+                <p>Be among the first 1,000 customers and enjoy exclusive gift!.</p>
+                <form id="userForm">
+                    <div class="form-group mui-textfield">
+                        <input type="text" id="userName" placeholder=" " required />
+                        <label for="userName" id="labelName">Name</label>
+                        <span class="error-message" id="nameError"></span>
+                    </div>
 
-                <div class="form-group mui-textfield">
-                    <input type="text" id="userEmail" placeholder=" " required />
-                    <label for="userEmail" id="labelEmail">Email</label>
-                    <span class="error-message" id="emailError"></span>
-                </div>
+                    <div class="form-group mui-textfield">
+                        <input type="text" id="userEmail" placeholder=" " required />
+                        <label for="userEmail" id="labelEmail">Email</label>
+                        <span class="error-message" id="emailError"></span>
+                    </div>
 
-                <div class="form-group mui-textfield">
-                    <input type="text" id="userPhone" placeholder=" " required />
-                    <label for="userPhone" id="labelPhone">Phone Number</label>
-                    <span class="error-message" id="phoneError"></span>
-                </div>
+                    <div class="form-group mui-textfield">
+                        <input type="text" id="userPhone" placeholder=" " required />
+                        <label for="userPhone" id="labelPhone">Phone Number</label>
+                        <span class="error-message" id="phoneError"></span>
+                    </div>
 
-                <button type="submit" class="submit-btn btn" id="submitBtn">Start Play</button>
-            </form>
+                    <div class="form-group mui-textfield">
+                        <input type="text" id="userAddress" placeholder=" " required />
+                        <label for="userAddress" id="labelAddress">Address</label>
+                        <span class="error-message" id="addressError"></span>
+                    </div>
+
+                    <button type="submit" class="submit-btn btn" id="submitBtn">Get my gift</button>
+                </form>
+            </div>
+
         </div>
     </div>
 
-    <!-- Spinning Wheel Container -->
-    <div class="container" id="wheelContainer" style="display: none;">
-        <h1 id="gameTitle">Spinning Color Wheel</h1>
-        <div class="wheel-container">
-            <div class="pointer"></div>
-            <div class="wheel" id="wheel"></div>
-            <div class="wheel-center"></div>
-        </div>
-        <button class="btn" id="spinBtn">SPIN</button>
-    </div>
 
     <!-- Winner Popup -->
-    <div class="popup" id="winnerPopup" style="display: none;">
-        <canvas id="confettiCanvas"></canvas>
+    <div class="popup winner-popup" id="winnerPopup">
         <div class="popup-content">
-            <h2 id="winnerText">Congratulations! You Won! 🎉</h2>
-            <p id="winnerColorText">You nailed it! The winning color is:</p>
-            <div class="color-display" id="winColor"></div>
-            <p id="colorName">Color</p>
-            <button class="btn" id="closeBtn">Back to Website</button>
+            <h2 id="winnerText">Thank you, <br /> beautiful!</h2>
+
+            <p>You've successfully joined our first 100.</p>
+
+            <p>Your exclusive gift is being perpend with care.</p>
         </div>
     </div>
 
