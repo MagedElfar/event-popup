@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     window.parent.postMessage({ action: 'startSetCookies' }, '*');
                     setTimeout(() => {
                         window.parent.postMessage({ action: 'closePopup' }, '*');
-                    })
+                    }, 5000)
                 })
                 .catch(err => {
                     console.error('Failed to send data:', err);
