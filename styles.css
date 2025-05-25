@@ -26,10 +26,8 @@ body {
     justify-content: center;
     min-height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
+    background-color: transparent;
     overflow-x: hidden;
-    background-size: cover;
-    background-position: center;
 }
 
 /* The rest of the CSS styling remains the same... */
