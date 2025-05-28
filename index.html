@@ -17,7 +17,7 @@
                 <img src="/media/popup-image.png" />
             </div>
             <div class="form-popup-content">
-                <h1>Only for the First <span>100!</span></h1>
+                <h1 class="h1">Only for the First <span>100!</span></h1>
                 <p>Be among the first 1,00 customers and enjoy exclusive gift!.</p>
                 <form id="userForm">
                     <div class="form-group mui-textfield">
@@ -51,6 +51,22 @@
         </div>
     </div>
 
+
+    <div class="container" id="giftContainer">
+        <h1 class="h1">🎁 Mystery <span>Gift Boxes</span> 🎁</h1>
+        <p>Select exactly 3 products from the options below!</p>
+        <p class="selections-count">Selections remaining: <span id="remaining">3</span></p>
+
+        <div class="gift-grid" id="giftGrid">
+            <!-- Gift boxes will be generated here -->
+        </div>
+
+        <div class="action-buttons">
+            <button type="submit" class="btn" id="giftBtn" disabled>
+                🎁 Submit Selection
+            </button>
+        </div>
+    </div>
 
     <!-- Winner Popup -->
     <div class="popup winner-popup" id="winnerPopup">
