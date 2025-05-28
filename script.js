@@ -99,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function () {
         window.parent.postMessage({ action: 'closePopup' }, '*');
 
     });
-    createGiftBoxes();
 
     // Redirect after spin
     closeBtn.addEventListener('click', function () {
