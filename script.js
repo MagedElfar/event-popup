@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function createGiftBoxes() {
-        fetch('https://api.dhamer.co/api/v1/search/stocks?page=1&limit=6&includeInpublish=false&includeInactive=false&inStock=true&groupByProduct=true', {
+        fetch('https://api.dhamer.co/api/v1/search/stocks?page=1&limit=6&includeInpublish=false&includeInactive=false&inStock=true&groupByProduct=true&random=true', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
