@@ -398,7 +398,7 @@ p {
 @media (max-width: 1024px) {
 
     .form-popup img {
-        height: 250px;
+        height: auto;
         width: 100%;
         object-fit: cover;
     }
